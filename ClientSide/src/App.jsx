@@ -6,6 +6,26 @@ import SideBar from './components/SdieBar/SideBar.jsx'
 function App() {
   // const [count, setCount] = useState(0)
 
+  function Designed() {
+    <div className="container-fluid">
+        <div className="row">
+          <div className="col-md-9 col-lg-10 offset-md-3 offset-lg-2">
+            <div className="content">
+
+              <NavBar />
+
+              {/* <!-- Your main content goes here --> */}
+              <h1>Main Content</h1>
+              <p>This is the main content area of your page.</p>
+              {/* <!-- Add more content as needed --> */}
+            </div>
+          </div>
+          {/* Side bar */}
+            <SideBar/>
+          {/* <!-- Main content --> */}
+        </div>
+      </div>
+  }
   return (
     <>
       {/* <h1>Hello world</h1> */}
@@ -18,24 +38,9 @@ function App() {
         </div>
       </div> */}
 
-      <div className="container-fluid">
-        <div className="row">
-          {/* Side bar */}
-            <SideBar/>
-          {/* <!-- Main content --> */}
-          <div className="col-md-9 col-lg-10 offset-md-3 offset-lg-2">
-            <div className="content">
-
-              <NavBar />
-
-              {/* <!-- Your main content goes here --> */}
-              <h1>Main Content</h1>
-              <p>This is the main content area of your page.</p>
-              {/* <!-- Add more content as needed --> */}
-            </div>
-          </div>
-        </div>
-      </div>
+      <NavBar />
+    
+      {/* {Designed()} */}
 
 
     </>
