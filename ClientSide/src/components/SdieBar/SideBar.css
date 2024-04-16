@@ -26,6 +26,13 @@ hr.h-color {
 .sidebar li.active a,
 .sidebar li.active a:hover {
     color: #000;
+    /* color: red; */
+}
+
+.sidebar li a:hover {
+    /* color: red; */
+    background-color: lightslategray;
+    border-radius: 10px;
 }
 
 .sidebar li a {
