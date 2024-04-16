@@ -46,8 +46,11 @@ function SideBar() {
                 <li className="">
                     <a href="#" className="text-decoration-none px-3 py-3 my-1 d-block d-flex justify-content-between">
                         <span>
-                            <SubscriptionsRoundedIcon /> Subscription</span>
-                        <span className="bg-dark rounded-pill text-white py-0 px-2">02</span>
+                            <SubscriptionsRoundedIcon /> Subscription
+                        </span>
+                        <span className="bg-dark rounded-pill text-white py-0 px-2">
+                            02
+                        </span>
                     </a>
                 </li>
                 <li className="">
