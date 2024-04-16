@@ -45,3 +45,8 @@ hr.h-color {
         margin-left: 0;
     }
 }
+
+.sidebar-bottom{
+    position: absolute;
+    bottom: 10px;
+}
