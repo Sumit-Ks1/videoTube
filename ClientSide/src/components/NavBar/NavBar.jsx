@@ -1,15 +1,15 @@
 // import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './NavBar.css'
-// import SideBar from '../SdieBar/SideBar';
-//this is comment
+import MenuIcon from '@mui/icons-material/Menu';
+
 
 function forComparission() {
     return (
         <nav className="navbar navbar-expand-md navbar-light bg-light">
             <div className="container-fluid">
                 <div className="d-flex justify-content-between d-md-none d-block">
-                    <button className="btn px-1 py-0 open-btn me-2"><i className="fal fa-stream"></i>|||</button>
+                    <button className="btn px-1 py-0 open-btn me-2" id='open-side-btn'>|||</button>
                     <a className="navbar-brand fs-4" href="#"><span
                         className="bg-dark rounded px-2 py-0 text-white">CL</span></a>
 
@@ -33,7 +33,13 @@ function forComparission() {
     )
 }
 
-function NavBar() {
+function NavBar(props) {
+
+    // passing on click listener to App.jsx
+    function sideButtonClick() { 
+        props.onSideClick()
+    }
+
     return (
         // <div>
         //     <nav className="navbar bg-body-tertiary navBar">
@@ -52,10 +58,16 @@ function NavBar() {
         <nav className="navbar navbar-expand-md navbar-light bg-dark">
             <div className="container-fluid">
                 <div className="d-flex justify-content-between d-md-none d-block">
-                    <button className="btn px-1 py-0 open-btn me-2">|||</button>
+                    <button 
+                    className="btn px-1 py-0 open-btn me-2 text-white " 
+                    id='close-side-btn'
+                    onClick={sideButtonClick}>
+                        <MenuIcon/>
+                    </button>
+                    {/* btn d-md-none d-block close-btn px-1 py-0 text-white */}
                 </div>
-                    <a className="navbar-brand fs-4" href="#">
-                        <span className="bg-dark rounded px-2 py-0 text-white">YT</span></a>
+                <a className="navbar-brand fs-4" href="#">
+                    <span className="bg-dark rounded px-2 py-0 text-white">YT</span></a>
                 {/* <a className="navbar-brand">Navbar</a> */}
                 <form className="d-flex" role="search">
                     <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search">

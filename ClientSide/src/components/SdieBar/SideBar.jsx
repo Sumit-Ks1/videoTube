@@ -6,8 +6,10 @@ import RestoreRoundedIcon from '@mui/icons-material/RestoreRounded';
 import PlaylistPlayRoundedIcon from '@mui/icons-material/PlaylistPlayRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import FeedbackRoundedIcon from '@mui/icons-material/FeedbackRounded';
+import MenuIcon from '@mui/icons-material/Menu';
 
-function SideBar() {
+
+function SideBar(props) {
 
     // For comparission
 
@@ -27,14 +29,23 @@ function SideBar() {
 
     // })
 
+    function removeClass() {
+        props.onSideClick()
+    }
 
     return (
-        <div className="sidebar" id="side_nav">
+        <div
+            className={`sidebar ${props.classAdded ? 'active' : ''}`}
+            id="side_nav"
+>
             <div className="header-box px-2 pt-3 pb-4 d-flex justify-content-between">
-                <h1 className="fs-4"><span className="bg-white text-dark rounded shadow px-2 me-2">CL</span> <span
+                <h1 className="fs-4"><span className="bg-white text-dark rounded shadow px-2 me-2">YT</span> <span
                     className="text-white">Youtube</span></h1>
-                <button className="btn d-md-none d-block close-btn px-1 py-0 text-white"><i
-                    className="fal fa-stream"></i>|||</button>
+                <button className="btn d-md-none d-block close-btn px-1 py-0 text-white"
+                    id='close-side-btn'
+                    onClick={removeClass}>
+                    <MenuIcon/>
+                </button>
             </div>
 
             <ul className="list-unstyled px-2">
@@ -61,8 +72,6 @@ function SideBar() {
                     <a href="#" className="text-decoration-none px-3 py-3 my-1 d-block">
                         <PlaylistPlayRoundedIcon />Playlist</a>
                 </li>
-                {/* <li className=""><a href="#" className="text-decoration-none px-3 py-2 d-block"><i className="fal fa-users"></i>
-                    Customers</a></li> */}
             </ul>
 
             <hr className="h-color mx-2"></hr>
