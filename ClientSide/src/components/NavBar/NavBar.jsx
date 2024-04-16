@@ -2,6 +2,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './NavBar.css'
 // import SideBar from '../SdieBar/SideBar';
+//this is comment
 
 function forComparission() {
     return (
