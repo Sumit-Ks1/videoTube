@@ -3,7 +3,7 @@ import './App.css'
 import NavBar from './components/NavBar/NavBar.jsx'
 import SideBar from './components/SdieBar/SideBar.jsx'
 import Content from './components/Content/Content.jsx'
-import VideoCard from './components/VideoCard/VideoCard.jsx'
+import VideoCard from './components/Content/VideoCard/VideoCard.jsx'
 import { useState } from 'react'
 
 
@@ -38,7 +38,7 @@ function App() {
 
           {/* Content */}
           <Content />
-          <VideoCard/>
+          {/* <VideoCard/> */}
 
           
         </div>

@@ -1,19 +1,29 @@
 import React from 'react'
+import HomeDetails from '../../Details/HomeDetails'
+import VideoCard from './VideoCard/VideoCard'
+import Details from '../../Details/HomeDetails'
 
 function Content() {
+
+    var detail = Details[0]
+    console.log(detail)
+
     return (
-        <div className="dashboard-content px-3 pt-4 bg-secondary text-white">
-            <h2 className="fs-5"> Home Page</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, totam? Sequi alias eveniet ut quas
-                ullam delectus et quasi incidunt rem deserunt asperiores reiciendis assumenda doloremque provident,
-                dolores aspernatur neque.</p>
-            <hr />
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, totam? Sequi alias eveniet ut quas
-                ullam delectus et quasi incidunt rem deserunt asperiores reiciendis assumenda doloremque provident,
-                dolores aspernatur neque.</p>
-                <p>.</p>
-        </div>
+        <>
+            <div className="row row-cols-1 row-cols-md-3 g-4">
+                {Details.map( (detail) => {
+                    return (
+                        <VideoCard
+                            key={detail.id}
+                            fileName={detail.fileName}
+                            desc={detail.desc}
+                        />
+                    )
+                })}
+            </div>
+        </>
     )
 }
+
 
 export default Content

@@ -40,7 +40,7 @@ function SideBar(props) {
 >
             <div className="header-box px-2 pt-3 pb-4 d-flex justify-content-between">
                 <h1 className="fs-4"><span className="bg-white text-dark rounded shadow px-2 me-2">YT</span> <span
-                    className="text-white">Youtube</span></h1>
+                    className="text-white">Youthube</span></h1>
                 <button className="btn d-md-none d-block close-btn px-1 py-0 text-white"
                     id='close-side-btn'
                     onClick={removeClass}>

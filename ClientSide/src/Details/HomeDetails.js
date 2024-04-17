@@ -1,8 +1,8 @@
 
-HomeDetails = [
+const HomeDetails = [
     {
         id : 0,
-        fileName : best-thumbnail,
+        fileName : 'best-thumbnail',
         desc : 'random text inside this could be the description of the video and it is a long one lets see how much should be good'
     },
     {
