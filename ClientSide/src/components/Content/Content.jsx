@@ -37,6 +37,15 @@ function Content(props) {
                         />
                     )
                 })}
+                {Details.map((detail) => {
+                    return (
+                        <VideoCard
+                            key={detail.id}
+                            fileName={detail.fileName}
+                            desc={detail.desc}
+                        />
+                    )
+                })}
             </div>
         </>
     )

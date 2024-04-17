@@ -9,7 +9,6 @@ const HomeDetails = [
         id:1,
         fileName : 'game',
         desc : 'this are the best games out there and will be very good'
-
     },
     {
         id:2,

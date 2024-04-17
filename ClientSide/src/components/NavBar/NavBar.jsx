@@ -7,17 +7,17 @@ import MenuIcon from '@mui/icons-material/Menu';
 function forComparission() {
     return (
         <nav className="navbar navbar-expand-md navbar-light bg-light">
-            <div className="container-fluid">
+            <div className="container-fluid"> 
+            {/*to remove padding*/}
                 <div className="d-flex justify-content-between d-md-none d-block">
                     <button className="btn px-1 py-0 open-btn me-2" id='open-side-btn'>|||</button>
-                    <a className="navbar-brand fs-4" href="#"><span
+                    <a className="navbar-brand fs-4" href=""><span
                         className="bg-dark rounded px-2 py-0 text-white">CL</span></a>
 
                 </div>
                 <button className="navbar-toggler p-0 border-0" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
-                    <i className="fal fa-bars"></i>
                 </button>
                 <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul className="navbar-nav mb-2 mb-lg-0">

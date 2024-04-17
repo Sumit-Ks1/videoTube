@@ -2,6 +2,15 @@ body {
     background: #eee;
 }
 
+/* .navbar{
+    margin-left: 250px;
+} */
+
+/* .navbar{
+    z-index: 1;
+} */
+
+
 #side_nav {
     background: #000;
     min-width: 250px;
