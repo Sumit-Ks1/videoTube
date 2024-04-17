@@ -35,7 +35,7 @@ function SideBar(props) {
 
     return (
         <div
-            className={`sidebar ${props.classAdded ? 'active' : ''}`}
+            className={`position-fixed sidebar vh-100 ${props.classAdded ? 'active' : ''}`}
             id="side_nav"
 >
             <div className="header-box px-2 pt-3 pb-4 d-flex justify-content-between">

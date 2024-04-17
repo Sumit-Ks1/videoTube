@@ -10,15 +10,15 @@ import { useState } from 'react'
 function App() {
 
   // for the side bar on and off
-  const [classAdded, setclassAdded] = useState(false);
+  const [sideActive, setsideActive] = useState(false);
 
   // function to swick side bar
   function sideClick() {
-    if(classAdded) {
-      setclassAdded(false);
+    if(sideActive) {
+      setsideActive(false);
     }
     else{
-      setclassAdded(true);
+      setsideActive(true);
     }
   }
 
@@ -27,7 +27,7 @@ function App() {
     <>
       <div className="main-container d-flex">
         {/* Side bar */}
-        <SideBar onSideClick={sideClick} classAdded={classAdded}/>
+        <SideBar onSideClick={sideClick} classAdded={sideActive}/>
 
         <div className="content">
 
@@ -37,7 +37,7 @@ function App() {
 
 
           {/* Content */}
-          <Content />
+          <Content isSideActive={sideActive}/>
           {/* <VideoCard/> */}
 
           

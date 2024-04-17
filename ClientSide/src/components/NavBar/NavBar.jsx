@@ -54,7 +54,7 @@ function NavBar(props) {
         //             </form>
         //         </div>
         //     </nav>
-        // </div>
+        // </div>x
         <nav className="navbar navbar-expand-md navbar-light bg-dark">
             <div className="container-fluid">
                 <div className="d-flex justify-content-between d-md-none d-block">
@@ -73,7 +73,9 @@ function NavBar(props) {
                     <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     </input>
                     {/* this button was not working inside input elment */}
-                    <button className="btn btn-outline-success" type="submit">Search</button>
+                    <button className="btn btn-outline-success" type="submit">
+                        O
+                        </button>
                 </form>
             </div>
         </nav>
