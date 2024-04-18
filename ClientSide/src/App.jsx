@@ -1,14 +1,18 @@
+/* eslint-disable react/prop-types */
+
 import './App.css'
+
 import NavBar from './components/NavBar/NavBar.jsx'
 import SideBar from './components/SdieBar/SideBar.jsx'
 import Content from './components/Content/Content.jsx'
-import VideoCard from './components/Content/VideoCard/VideoCard.jsx'
+import Subs from './components/Content/Subs.jsx'
+import SignUp from './components/Auth/SignUp.jsx'
 
 import { useState } from 'react'
-
 // for setting different routes
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+
 
 
 function App() {
@@ -29,28 +33,12 @@ function App() {
   // for other routes
   const NotFound = () => (
     <div>
-      <h1>404 Not Found</h1>
+      <h1>Error: 404 Not Found</h1>
       <p>The page you are looking for does not exist.</p>
     </div>
   );
 
-
-  // {/* Side bar */ }
-  //         <SideBar onSideClick={sideClick} classAdded={sideActive} />
-
-  // <div className="content">
-
-
-  //   {/* nav bar */}
-  //   <NavBar onSideClick={sideClick} />
-
-
-  //   {/* Content */}
-  //   <Content isSideActive={sideActive} />
-  //   {/* <VideoCard/> */}
-
-  // </div>
-
+  // the original code
   const Home = () => (
 
     < div className="content">
@@ -67,78 +55,50 @@ function App() {
     </div>
   );
 
-  const Subs = () => (
-    < div className="content">
-      {/* Side bar */}
-      <SideBar onSideClick={sideClick} classAdded={sideActive} />
 
-      {/* nav bar */}
-      <NavBar onSideClick={sideClick} />
+  const Layout = ({ children }) => {
+    return (
+      <div className="app-container">
 
+        <SideBar onSideClick={sideClick} classAdded={sideActive} />
 
-      
-    </div>
-  )
+        <NavBar onSideClick={sideClick} />
+
+        {/* for children component */}
+        <Outlet />
+
+      </div>
+    );
+  };
+
 
   return (
     <>
-      <Router>
+      <BrowserRouter>
+        <Routes>
 
-        <div className="main-container d-flex p-0">
+          {/* Routes that require sidebar and navbar */}
+          <Route path="/" element={<Layout />}>
+            <Route index element={ // home
+              <Content isSideActive={sideActive} />
+            } />
+            <Route path="subscription" element={
+              <Subs />
+            }/>
+            <Route path="history" element={
+              <Subs />
+            }/>
+          </Route>
 
-          <Routes>
-            <Route path="/"
-              element={
-                <Home />
-              }
-            />
-            <Route path="subscription/"
-              element={
-                <Subs />
-              } />
-            <Route path="*"
-              element={
-                <NotFound />}
-            />
-          </Routes>
-
-        </div>
-      </Router>
+          {/* Routes without sidebar and navbar */}
+          <Route path="/signup" element={<SignUp />} />
+          <Route path='/login' element={<SignUp />} /> {/* replace */}
+          <Route path="/*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
 
     </>
   )
 }
 
 export default App
-/**
- 
-const NotFound = () => (
-  <div>
-    <h1>404 Not Found</h1>
-    <p>The page you are looking for does not exist.</p>
-  </div>
-);
-
-const App = () => {
-  return (
-    <Router>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-        </ul>
-      </nav>
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Router>
-  );
-};
- */
