@@ -55,7 +55,7 @@ function SideBar(props) {
                         Home</a>
                 </li>
                 <li className="">
-                    <a href="subscription/" className="text-decoration-none px-3 py-3 my-1 d-block d-flex justify-content-between">
+                    <a href="/subscription" className="text-decoration-none px-3 py-3 my-1 d-block d-flex justify-content-between">
                         <span>
                             <SubscriptionsRoundedIcon /> Subscription
                         </span>
@@ -65,11 +65,11 @@ function SideBar(props) {
                     </a>
                 </li>
                 <li className="">
-                    <a href="history" className="text-decoration-none px-3 py-3 my-1 d-block">
+                    <a href="/history" className="text-decoration-none px-3 py-3 my-1 d-block">
                         <RestoreRoundedIcon /> History</a>
                 </li>
                 <li className="">
-                    <a href="#" className="text-decoration-none px-3 py-3 my-1 d-block">
+                    <a href="/playlist" className="text-decoration-none px-3 py-3 my-1 d-block">
                         <PlaylistPlayRoundedIcon />Playlist</a>
                 </li>
             </ul>
