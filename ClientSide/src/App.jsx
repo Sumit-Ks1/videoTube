@@ -1,15 +1,18 @@
+/* eslint-disable react/prop-types */
+
 import './App.css'
+
 import NavBar from './components/NavBar/NavBar.jsx'
 import SideBar from './components/SdieBar/SideBar.jsx'
-// import Content from './components/Content/Content.jsx'
-// import VideoCard from './components/Content/VideoCard/VideoCard.jsx'
+import Content from './components/Content/Content.jsx'
 import Subs from './components/Content/Subs.jsx'
+import SignUp from './components/Auth/SignUp.jsx'
 
 import { useState } from 'react'
-
 // for setting different routes
-// import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+
 
 
 function App() {
@@ -45,127 +48,72 @@ function App() {
   // for other routes
   const NotFound = () => (
     <div>
-      <h1>404 Not Found</h1>
+      <h1>Error: 404 Not Found</h1>
       <p>The page you are looking for does not exist.</p>
     </div>
   );
 
-  // initial code for reference
-  // {/* Side bar */ }
-  // <SideBar onSideClick={sideClick} classAdded={sideActive} />
+  // the original code
+  const Home = () => (
 
-  // <div className="content">
+    < div className="content">
+      {/* Side bar */}
+      <SideBar onSideClick={sideClick} classAdded={sideActive} />
+
+      {/* nav bar */}
+      <NavBar onSideClick={sideClick} />
 
 
-  //   {/* nav bar */}
-  // <NavBar onSideClick={sideClick} />
+      {/* Content */}
+      <Content isSideActive={sideActive} />
+      {/* <VideoCard/> */}
+    </div>
+  );
 
 
-  //   {/* Content */}
-  //   <Content isSideActive={sideActive} />
-
-  const SignUp = () => (
-    <>
-      <h1>This is sing up  page    sflkjwepivjwoeirjowieuwoigj</h1>
-    </>
-  )
-
-  const Content = ({ isSideActive }) => {
+  const Layout = ({ children }) => {
     return (
-      <div>
-        {console.log("Inside the content")}
-        <p>Content is being rendered.</p>
-        {/* Your content that should be displayed */}
-        {isSideActive && <p>Sidebar is active</p>}
+      <div className="app-container">
+
+        <SideBar onSideClick={sideClick} classAdded={sideActive} />
+
+        <NavBar onSideClick={sideClick} />
+
+        {/* for children component */}
+        <Outlet />
+
       </div>
     );
   };
 
+
   return (
     <>
-      {/* <Router>
-        <div className="main-container d-flex p-0">
-          < div className="content">
-
-            <SideBar onSideClick={sideClick} classAdded={sideActive} />
-            <NavBar onSideClick={sideClick} />
-            <Routes>
-
-              <Route path="/"
-                element={
-                  <Content isSideActive={sideActive} />
-                }
-              />
-              <Route path="subscription/"
-                element={
-                  <Subs />
-                } />
-              <Route path="*"
-                element={
-                  <NotFound />}
-              />
-            </Routes>
-
-          </div>
-        </div>
-
-      </Router>  */}
-
-      <Router>
+      <BrowserRouter>
         <Routes>
+
           {/* Routes that require sidebar and navbar */}
           <Route path="/" element={<Layout />}>
-            
-            <Route index element={
+            <Route index element={ // home
               <Content isSideActive={sideActive} />
             } />
-            <Route  path="subscription" element={
+            <Route path="subscription" element={
               <Subs />
-            } />
-
-            {/* <Route path="settings" element={<Settings />} /> */}
+            }/>
+            <Route path="history" element={
+              <Subs />
+            }/>
           </Route>
 
-          {/* Route without sidebar and navbar */}
+          {/* Routes without sidebar and navbar */}
           <Route path="/signup" element={<SignUp />} />
+          <Route path='/login' element={<SignUp />} /> {/* replace */}
           <Route path="/*" element={<NotFound />} />
         </Routes>
-      </Router>
+      </BrowserRouter>
 
     </>
   )
 }
 
 export default App
-/**
-  // example for reference
-const NotFound = () => (
-  <div>
-    <h1>404 Not Found</h1>
-    <p>The page you are looking for does not exist.</p>
-  </div>
-);
-
-const App = () => {
-  return (
-    <Router>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-        </ul>
-      </nav>
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Router>
-  );
-};
- */

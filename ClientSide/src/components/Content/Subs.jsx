@@ -1,10 +1,9 @@
-import React from 'react'
 
-function Subs() {
+const Subs = () => {
   return (
-    <div>
-        <h1>this is a subscription page</h1>
-    </div>
+    <>
+        <h1>this is the sub On Progress .. will be there soon </h1>
+    </>
   )
 }
 
