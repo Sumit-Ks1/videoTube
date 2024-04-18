@@ -30,21 +30,6 @@ function App() {
     }
   }
 
-  const Layout = ({ children }) => {
-    console.log("Inside Layout")
-    return (
-      <div className="app-container">
-        {/* <SideBar /> */}
-        <SideBar onSideClick={sideClick} classAdded={sideActive} />
-
-        {/* <NavBar /> */}
-        <NavBar onSideClick={sideClick} />
-
-        <main>{children}</main>
-      </div>
-    );
-  };
-
   // for other routes
   const NotFound = () => (
     <div>
@@ -103,6 +88,9 @@ function App() {
             <Route path="history" element={
               <Subs />
             }/>
+            <Route path="playlist" element={
+              <Subs />
+            } />
           </Route>
 
           {/* Routes without sidebar and navbar */}
