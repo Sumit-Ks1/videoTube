@@ -12,6 +12,7 @@ import { useState } from 'react'
 // for setting different routes
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
+import MoreDetails from './components/Auth/MoreDetails.jsx'
 
 
 
@@ -76,7 +77,6 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-
           {/* Routes that require sidebar and navbar */}
           <Route path="/" element={<Layout />}>
             <Route index element={ // home
@@ -95,11 +95,10 @@ function App() {
 
           {/* Routes without sidebar and navbar */}
           <Route path="/signup" element={<SignUp />} />
-          <Route path='/login' element={<SignUp />} /> {/* replace */}
+          <Route path='/moreDetails' element={<MoreDetails />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
-
     </>
   )
 }

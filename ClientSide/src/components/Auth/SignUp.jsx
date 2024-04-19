@@ -1,24 +1,24 @@
 import './Auth.css'
 import { useState, useEffect } from 'react'
-
-
-
-
+import { useNavigate } from 'react-router-dom'
 
 function SignUp() {
 
   // State to manage the active tab
   const [activeTab, setActiveTab] = useState(window.location.hash || '#pills-login');
-  
-  // event handler for checkbox
-  // function RegisterForm() { 
-  //   // Define state for the checkbox
-  //   const [isChecked, setIsChecked] = useState(false);
 
-  //   // Event handler for checkbox changes
-  //   const handleCheckboxChange = (e) => {
-  //     setIsChecked(e.target.checked);
-  //   };
+  const navigate = useNavigate(true);
+
+  /*  For checkbox click handler
+  event handler for checkbox
+  function RegisterForm() { 
+    // Define state for the checkbox
+    const [isChecked, setIsChecked] = useState(false);
+
+    // Event handler for checkbox changes
+    const handleCheckboxChange = (e) => {
+      setIsChecked(e.target.checked);
+    };*/
 
   // Event handler for tab click
   const handleTabClick = (e) => {
@@ -41,19 +41,38 @@ function SignUp() {
     };
   }, []);
 
+  function SignInHandler() {
+    console.log("Inside click handler")
+    const isAuthenticated = true; // example
+    if (isAuthenticated) {
+      // return <Navigate to='/moreDetails' />
+      navigate('/moreDetails')
+    }
+    else {
+      // return <Navigate to='/signup' />
+      navigate('/signup')
+    }
 
+  }
+
+  /*const isAuthenticated = false; // Get from backend
+
+  if (!isAuthenticated) {
+    // Redirect to login if not authenticated
+    return <Navigate to="/signup" />;
+  }
+*/
 
   return (
-    <div className="bg-img d-flex justify-content-center align-items-center vh-100">
-      <div className="rounded-5 p-3 bg-dark card mx-3 mx-md-0 col-md-6 col-lg-5 col-xl-4 col-sm-8">
-        <div className="card-body text-white">
-
+    <div className="main-back bg-dark d-flex justify-content-center align-items-center vh-100">
+      <div className=" rounded-5 p-3 bg-black card mx-3 mx-md-0 col-md-6 col-lg-5 col-xl-4 col-sm-8">
+        <div className="signinCard card-body text-white">
 
           {/* Pills navs */}
-          <ul className="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+          <ul className=" nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
             <li className="nav-item" role="presentation">
               <a
-                className={`nav-link ${activeTab === '#pills-login' ? 'active' : ''}`}
+                className={` nav-link ${activeTab === '#pills-login' ? 'active' : ''}`}
                 id="tab-login"
                 href="#pills-login"
                 role="tab"
@@ -84,32 +103,26 @@ function SignUp() {
 
             {/* Login Tab */}
             <div className={`tab-pane fade ${activeTab === '#pills-login' ? 'show active' : ''}`} id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-              {/* Login form content */}
-              {/* <form>
-                <h3>Login</h3>
-                <p>Implement your login form here.</p>
-              </form> */}
-              <form>
-                <div className="text-center mb-3">
-                  <p>Sign in with:</p>
 
-                  <button type="button" data-mdb-button-init data-mdb-ripple-init className="btn btn-secondary btn-floating mx-1">
-                    Google
+              <form className='mt-5'>
+                {/* <div className="text-center mb-3">
+
+                  <button type="button" data-mdb-button-init data-mdb-ripple-init className="btn btn-secondary btn-floating mx-1 googleSignIn">
+                    Sign in with Google
                   </button>
-                </div>
+                </div> */}
 
-                <p className="text-center">or:</p>
 
                 {/* <!-- Email input --> */}
                 <div data-mdb-input-init className="form-outline mb-4">
-                  <input type="email" id="loginName" className="form-control" />
                   <label className="form-label" htmlFor="loginName">Email or username</label>
+                  <input type="email" id="loginName" className="form-control" />
                 </div>
 
                 {/* <!-- Password input --> */}
                 <div data-mdb-input-init className="form-outline mb-4">
-                  <input type="password" id="loginPassword" className="form-control" />
                   <label className="form-label" htmlFor="loginPassword">Password</label>
+                  <input type="password" id="loginPassword" className="form-control" />
                 </div>
 
                 {/* <!-- 2 column grid layout --> */}
@@ -117,8 +130,8 @@ function SignUp() {
                   <div className="col-md-6 d-flex justify-content-center">
                     {/* <!-- Checkbox --> */}
                     <div className="form-check mb-3 mb-md-0">
-                      <input className="form-check-input" type="checkbox" value="" id="loginCheck" checked />
                       <label className="form-check-label" htmlFor="loginCheck"> Remember me </label>
+                      <input className="form-check-input" type="checkbox" value="" id="loginCheck" checked />
                     </div>
                   </div>
 
@@ -129,11 +142,15 @@ function SignUp() {
                 </div>
 
                 {/* <!-- Submit button --> */}
-                <button type="submit" data-mdb-button-init data-mdb-ripple-init className="btn btn-primary btn-block mb-4">Sign in</button>
+                <div className="d-flex justify-content-center">
+                  <button type="submit" data-mdb-button-init data-mdb-ripple-init className="btn btn-primary btn-block mb-4"> Sign in</button>
+                </div>
 
                 {/* <!-- Register buttons --> */}
                 <div className="text-center">
-                  <p>Not a member? <a href="#!">Register</a></p>
+                  <p>Not a member?
+                    <a href="#pills-register">Register</a>
+                  </p>
                 </div>
               </form>
             </div>
@@ -142,52 +159,42 @@ function SignUp() {
 
             {/* Register Tab */}
             <div className={`tab-pane fade ${activeTab === '#pills-register' ? 'show active' : ''}`} id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-              {/* Register form content */}
-              
-              <form>
-                <div className="text-center mb-3">
-                  <p>Sign up with:</p>
-                  
-                  <button type="button" data-mdb-button-init data-mdb-ripple-init className="btn btn-secondary btn-floating mx-1">
-                    Google
-                  </button>
-                </div>
 
-                <p className="text-center">or:</p>
+              <form className='mt-5'>
 
                 {/* <!-- Name input --> */}
                 <div data-mdb-input-init className="form-outline mb-4">
-                  <input type="text" id="registerName" className="form-control" />
                   <label className="form-label" htmlFor="registerName">Name</label>
+                  <input type="text" id="registerName" className="form-control" />
                 </div>
 
                 {/* <!-- Username input --> */}
                 <div data-mdb-input-init className="form-outline mb-4">
+                  <label className="form-label" htmlFor="registerUsername">Username (To Be Unique) </label>
                   <input type="text" id="registerUsername" className="form-control" />
-                  <label className="form-label" htmlFor="registerUsername">Username</label>
                 </div>
 
                 {/* <!-- Email input --> */}
                 <div data-mdb-input-init className="form-outline mb-4">
-                  <input type="email" id="registerEmail" className="form-control" />
                   <label className="form-label" htmlFor="registerEmail">Email</label>
+                  <input type="email" id="registerEmail" className="form-control" />
                 </div>
 
                 {/* <!-- Password input --> */}
                 <div data-mdb-input-init className="form-outline mb-4">
-                  <input type="password" id="registerPassword" className="form-control" />
                   <label className="form-label" htmlFor="registerPassword">Password</label>
+                  <input type="password" id="registerPassword" className="form-control" />
                 </div>
 
                 {/* <!-- Repeat Password input --> */}
-                <div data-mdb-input-init className="form-outline mb-4">
+                {/* <div data-mdb-input-init className="form-outline mb-4">
                   <input type="password" id="registerRepeatPassword" className="form-control" />
                   <label className="form-label" htmlFor="registerRepeatPassword">Repeat password</label>
-                </div>
+                </div> */}
 
                 {/* <!-- Checkbox --> */}
                 <div className="form-check d-flex justify-content-center mb-4">
-                  <input className="form-check-input me-2" type="checkbox" value="" id="registerCheck" 
+                  <input className="form-check-input me-2" type="checkbox" value="" id="registerCheck"
                     // checked={isChecked}
                     // onChange={handleCheckboxChange} // Provide onChange handler
                     aria-describedby="registerCheckHelpText" />
@@ -197,7 +204,9 @@ function SignUp() {
                 </div>
 
                 {/* <!-- Submit button --> */}
-                <button type="submit" data-mdb-button-init data-mdb-ripple-init className="btn btn-primary btn-block mb-3">Sign in</button>
+                {/* <div className="d-flex justify-content-center"> */}
+                <button type="submit" data-mdb-button-init data-mdb-ripple-init className="btn btn-primary btn-block mb-3" onClick={SignInHandler}>Sign in</button>
+                {/* </div> */}
               </form>
 
             </div>

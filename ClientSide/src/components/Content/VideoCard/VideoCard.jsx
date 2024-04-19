@@ -12,7 +12,7 @@ function VideoCard(props) {
           />
           <div className="card-body">
             <h5 className="card-title">
-              {props.fileName}
+                {props.fileName}
             </h5>
             <p className="card-text">
               {props.desc}
