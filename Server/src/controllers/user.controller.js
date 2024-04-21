@@ -5,7 +5,7 @@ import {Image} from "../models/image.model.js"
 import { uploadOnCloudinary } from "../utils/cloudinary.js"
 import { ApiResponse } from "../utils/ApiResponse.js";
 import Jwt from "jsonwebtoken";
-// 2
+// 2 3
 const generateAccessAndRefreshToken = async (userId) => {
     try {
 
