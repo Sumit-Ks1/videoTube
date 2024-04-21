@@ -1,6 +1,7 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiError.js"
 import { User } from "../models/user.models.js"
+import {Image} from "../models/image.model.js"
 import { uploadOnCloudinary } from "../utils/cloudinary.js"
 import { ApiResponse } from "../utils/ApiResponse.js";
 import Jwt from "jsonwebtoken";
@@ -20,7 +21,7 @@ const generateAccessAndRefreshToken = async (userId) => {
         throw new ApiError(500, "Something went wrong!! while generating refresh and access token")
     }
 }
-
+ 
 const registerUser = asyncHandler(async (req, res) => {
     // get user detail from frontend
     // validation - not empty string or input
@@ -49,32 +50,12 @@ const registerUser = asyncHandler(async (req, res) => {
     }
     console.log(username);
     // check for images, check for avatar
-    const avatarLocalPath = req.files?.avatar[0]?.path // this req.files is special feature given by multer middleware that we used in user.routes.js for checking files before taking avatar in database.
-    // const coverImageLocalPath = req.fileYs?.coverImage[0]?.path // .path Retrieves the local path where the uploaded file is temporarily stored on the server with field name coverImage. [0] means first file that is uploaded
-
-    let coverImageLocalPath;
-    if (req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length > 0) {
-        coverImageLocalPath = req.files.coverImage[0].path
-    }
-
-
-    if (!avatarLocalPath) {
-        throw new ApiError(400, "Avatar is not uploded")
-    }
-
-    // upload them to cloudinary, avatar
-    const avatar = await uploadOnCloudinary(avatarLocalPath)
-    const coverImage = await uploadOnCloudinary(coverImageLocalPath)
-
-    if (!avatar) {
-        throw new ApiError(400, "Avatar is not uploded")
-    }
-
+    // imageUser content was here before
     // create user object - create entry in db and therefore data in it will be available to the user
     const user = await User.create({
         fullName,
-        avatar: avatar.url,
-        coverImage: coverImage?.url || "",
+        // avatar: avatar.url,
+        // coverImage: coverImage?.url || "",
         email,
         password,
         username: username.toLowerCase()
@@ -88,11 +69,20 @@ const registerUser = asyncHandler(async (req, res) => {
     if (!createdUser) {
         throw new ApiError(500, "Something went wrong while registering the user")
     }
-
+    // console.log(req.params);
+    // console.log(req.query);
+    // console.log(req.body);
     return res.status(201).json(
         new ApiResponse(200, createdUser, "User registered Sucessfully")
     )
 
+})
+
+const imagesUser = asyncHandler(async (req,res) => {
+    const {avatar,coverImage} = req.body;
+    return res.status(200).json(
+        new ApiResponse(200,{avatar,coverImage},"Image path taken sucessfully")
+    )
 })
 
 const loginUser = asyncHandler(async (req, res) => {
@@ -369,7 +359,7 @@ const getUserChannelProfile = asyncHandler(async (req, res) => {
                 isSubscribed: {
                     // $cond is a conditional operator that allows you to specify an if-then-else condition.
                     $cond: {  //if: This is the condition to evaluate. If this condition is true, the $cond operator will return the value specified in the then field; otherwise, it will return the value specified in the else field.
-                        if: { $in: [req.user?._id, "$subsribers.subscriber"] }, // $in: This is an operator that checks if a value is in an array or object. "$subsribers.subscriber": This is the path to the field in the documents being aggregated. It’s prefixed with a dollar sign to indicate that it’s a field path.
+                        if: { $in: [req.user?._id, "$subscribers.subscriber"] }, // $in: This is an operator that checks if a value is in an array or object. "$subsribers.subscriber": This is the path to the field in the documents being aggregated. It’s prefixed with a dollar sign to indicate that it’s a field path.
                         then: true,
                         else: false
                     }
@@ -454,4 +444,4 @@ const getWatchHistory = asyncHandler(async (req, res) => {
     )
 })
 
-export { registerUser, loginUser, logoutUser, refreshAccessToken, changeCurrentPassword, getCurrentUser, updateAccountDetails, updateUserAvatar, updateUserCoverImage, getUserChannelProfile, getWatchHistory}
+export { registerUser, imagesUser, loginUser, logoutUser, refreshAccessToken, changeCurrentPassword, getCurrentUser, updateAccountDetails, updateUserAvatar, updateUserCoverImage, getUserChannelProfile, getWatchHistory}
