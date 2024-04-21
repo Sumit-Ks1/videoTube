@@ -31,7 +31,9 @@ hr.h-color {
 
 .sidebar li a:hover {
     /* color: red; */
-    background-color: lightslategray;
+    background-color: purple;
+    /* color: red; */
+    font-weight: 700;
     border-radius: 10px;
 }
 

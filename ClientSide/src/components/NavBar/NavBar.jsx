@@ -59,7 +59,7 @@ function NavBar(props) {
             <div className="container-fluid">
                 <div className="d-flex justify-content-between d-md-none d-block">
                     <button 
-                    className="btn px-1 py-0 open-btn me-2 text-white " 
+                    className="btn px- py-0 open-btn me-2 text-white " 
                     id='close-side-btn'
                     onClick={sideButtonClick}>
                         <MenuIcon/>

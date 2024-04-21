@@ -1,15 +1,14 @@
-
-.googleSignIn{
+.googleSignIn {
     font-weight: 600;
     border-radius: 14px;
 }
 
-.signinCard{
+.signinCard {
     /* box-shadow: #e399ff; */
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
-.signinCard a{
+.signinCard a {
     font-weight: bolder;
     font-size: 1.2em;
     border-radius: 15px;
@@ -17,12 +16,88 @@
 }
 
 
-.signinCard a:hover{
+.signinCard a:hover {
     background-color: rgba(1, 108, 195, 0.2);
 
 }
 
-.main-back{
+.main-back {
     background-image: url(../../assets/next-back.jpg);
     background-size: cover;
+}
+
+.avatar-card-div:hover {
+    background-color: skyblue !important;
+    border: 3px solid yellow;
+}
+
+.avatar-backs img {
+    /* height: 60rem */
+
+
+}
+
+.avatar-back {
+    overflow: hidden;
+}
+
+.avatar-backs img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+.avatar-back div {
+    background-color: yellow;
+    height: 150px;
+    /* border-radius: 20px; */
+}
+
+.avatar-back div:hover {
+    border: 5px solid yellow;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.selected-back {
+    height: auto;
+}
+
+.selected-back img {
+    width: 100%;
+    height: 15vh;
+    object-fit: cover;
+}
+
+.selected {
+    height: 150px;
+}
+.selected div {
+    height :150px;
+}
+.selected img {
+    display:inline-block;
+    height: 150px;
+    object-fit:cover;
+}
+.moreDetailsParent{
+    height: 100%;
+
+}
+.moreDetailsParent h1{
+    margin-left: 20px;
+    
+}
+.select-btn{
+    position:absolute;
+    top:130px;
+    left:18vw;
+
+
+}
+.select-btn:hover{
+    
 }
