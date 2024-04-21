@@ -50,9 +50,12 @@ function SideBar(props) {
 
             <ul className="list-unstyled px-2">
                 <li className="active">
-                    <a href="/" className="text-decoration-none px-3 py-3 my-1 d-block">
-                        <HomeRoundedIcon />
-                        Home</a>
+                    <Link to='/'>
+                        <a href="/" className="text-decoration-none px-3 py-3 my-1 d-block">
+                            <HomeRoundedIcon />
+                            Home
+                        </a>
+                    </Link>
                 </li>
                 <li className="">
                     <Link to='/subscription'>
@@ -74,13 +77,15 @@ function SideBar(props) {
                 <li className="">
                     <Link to='/history'>
                         <a href="/history" className="text-decoration-none px-3 py-3 my-1 d-block">
-                            <RestoreRoundedIcon /> History</a>
+                            <RestoreRoundedIcon /> History
+                        </a>
                     </Link>
                 </li>
                 <li className="">
                     <Link to='/playlist'>
                         <a href="/playlist" className="text-decoration-none px-3 py-3 my-1 d-block">
-                            <PlaylistPlayRoundedIcon />Playlist</a>
+                            <PlaylistPlayRoundedIcon />Playlist
+                        </a>
                     </Link>
                 </li>
             </ul>
@@ -89,11 +94,15 @@ function SideBar(props) {
             <div className="sidebar-bottom">
 
                 <ul className="list-unstyled px-2 ">
-                    <li className=""><a href="" className="text-decoration-none px-3 py-2 d-block">
-                        <SettingsRoundedIcon /> Settings</a>
+                    <li className="">
+                        <a href="" className="text-decoration-none px-3 py-2 d-block">
+                            <SettingsRoundedIcon /> Settings
+                        </a>
                     </li>
-                    <li className=""><a href="" className="text-decoration-none px-3 py-2 d-block">
-                        <FeedbackRoundedIcon /> Feedback</a>
+                    <li className="">
+                        <a href="" className="text-decoration-none px-3 py-2 d-block">
+                            <FeedbackRoundedIcon /> Feedback
+                        </a>
                     </li>
 
                 </ul>

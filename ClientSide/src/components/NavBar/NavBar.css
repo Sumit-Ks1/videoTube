@@ -9,8 +9,18 @@ body {
 /* .navbar{
     z-index: 1;
 } */
+nav{
+    margin-left: 250px;
+}
 
-.navbar{
+@media screen and (max-width:768px) {
+    nav {
+        margin-left: 0px !important;
+
+    }
+}
+
+.navbar {
     padding: 0;
     background-color: red;
 }

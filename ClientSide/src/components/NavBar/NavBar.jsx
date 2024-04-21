@@ -4,11 +4,11 @@ import './NavBar.css'
 import MenuIcon from '@mui/icons-material/Menu';
 
 
-function forComparission() {
+function justForComparission() {
     return (
         <nav className="navbar navbar-expand-md navbar-light bg-light">
-            <div className="container-fluid"> 
-            {/*to remove padding*/}
+            <div className="container-fluid">
+                {/*to remove padding*/}
                 <div className="d-flex justify-content-between d-md-none d-block">
                     <button className="btn px-1 py-0 open-btn me-2" id='open-side-btn'>|||</button>
                     <a className="navbar-brand fs-4" href=""><span
@@ -36,7 +36,7 @@ function forComparission() {
 function NavBar(props) {
 
     // passing on click listener to App.jsx
-    function sideButtonClick() { 
+    function sideButtonClick() {
         props.onSideClick()
     }
 
@@ -58,11 +58,11 @@ function NavBar(props) {
         <nav className="navbar navbar-expand-md navbar-light bg-dark">
             <div className="container-fluid">
                 <div className="d-flex justify-content-between d-md-none d-block">
-                    <button 
-                    className="btn px- py-0 open-btn me-2 text-white " 
-                    id='close-side-btn'
-                    onClick={sideButtonClick}>
-                        <MenuIcon/>
+                    <button
+                        className="btn px- py-0 open-btn me-2 text-white "
+                        id='close-side-btn'
+                        onClick={sideButtonClick}>
+                        <MenuIcon />
                     </button>
                     {/* btn d-md-none d-block close-btn px-1 py-0 text-white */}
                 </div>
@@ -75,7 +75,7 @@ function NavBar(props) {
                     {/* this button was not working inside input elment */}
                     <button className="btn btn-outline-success" type="submit">
                         O
-                        </button>
+                    </button>
                 </form>
             </div>
         </nav>
