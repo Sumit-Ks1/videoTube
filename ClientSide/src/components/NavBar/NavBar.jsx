@@ -2,7 +2,9 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './NavBar.css'
 import MenuIcon from '@mui/icons-material/Menu';
-
+import { Link } from 'react-router-dom';
+import SearchIcon from '@mui/icons-material/Search';
+import Search from '@mui/icons-material/Search';
 
 function justForComparission() {
     return (
@@ -55,7 +57,7 @@ function NavBar(props) {
         //         </div>
         //     </nav>
         // </div>x
-        <nav className="navbar navbar-expand-md navbar-light bg-dark">
+        <nav className="navbar navbar-expand-md navbar-light bg-dark py-2">
             <div className="container-fluid">
                 <div className="d-flex justify-content-between d-md-none d-block">
                     <button
@@ -66,17 +68,31 @@ function NavBar(props) {
                     </button>
                     {/* btn d-md-none d-block close-btn px-1 py-0 text-white */}
                 </div>
-                <a className="navbar-brand fs-4" href="#">
-                    <span className="bg-dark rounded px-2 py-0 text-white">YT</span></a>
-                {/* <a className="navbar-brand">Navbar</a> */}
+
                 <form className="d-flex" role="search">
-                    <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <input className="rounded-4 form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     </input>
                     {/* this button was not working inside input elment */}
-                    <button className="btn btn-outline-success" type="submit">
-                        O
+                    <button className="btn rounded-5 btn-outline-success" type="submit">
+                        <SearchIcon />
                     </button>
                 </form>
+
+                <div className="profile text-white">
+                    <span>User name</span>
+                    <img src='src/assets/avatars/avatar3.svg' alt="" />
+                </div>
+
+                {/* For Logo at the right
+                <Link to={'/'}>
+                    <a className="navbar-brand fs-4" href="">
+                        <span className="bg-dark rounded px-2 py-0 text-white">
+                            YT
+                        </span>
+                    </a>
+                </Link> */}
+                {/* <a className="navbar-brand">Navbar</a> */}
+
             </div>
         </nav>
     )

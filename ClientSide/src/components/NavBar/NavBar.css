@@ -68,3 +68,19 @@ hr.h-color {
         margin-left: 0;
     }
 }
+
+.profile{
+    /* background-color: red; */
+    margin-right: 60px;
+}
+
+.profile img{
+    position: absolute;
+    right: 2px;
+    top:2px;
+    object-fit: cover;
+    width: 70px;
+    /* background-color:aqua; */
+    border-radius: 50%;
+
+}
