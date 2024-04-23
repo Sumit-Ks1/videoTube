@@ -77,7 +77,7 @@ const registerUser = asyncHandler(async (req, res) => {
         new ApiResponse(200, createdUser, "User registered Sucessfully")
     )
 
-})
+})// next user selected image
 
 const imagesUser = asyncHandler(async (req,res) => {
     const {avatar,coverImage} = req.body;
