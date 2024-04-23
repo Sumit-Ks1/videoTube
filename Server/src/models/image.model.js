@@ -4,14 +4,14 @@ import mongoose, { Schema } from 'mongoose';
 const imageSchema = new Schema({
     avatar: {
         type: String, // we use cloudinary url
-        required: true,
+        
     },
     coverImage: {
         type: String,
     },
-    ownerimage: {
+    ownerOfImage: {
         type: Schema.Types.ObjectId,
-        ref: "User"
+        ref: "User",
     },
 }, { timestamps: true });
 
