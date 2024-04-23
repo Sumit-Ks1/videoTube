@@ -24,5 +24,8 @@
 }
 
 .card {
-    background-color: none !important;
+    /* background-color: none !important; */
+    /* background-color:red; */
+    /* opacity: 0; */
+    background-color: rgba(0, 0, 0, 0);
 }

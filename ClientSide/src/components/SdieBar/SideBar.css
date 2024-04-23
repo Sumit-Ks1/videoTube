@@ -2,6 +2,10 @@ body {
     background: #eee;
 }
 
+.sidebar-list a {
+    text-decoration: none;
+}
+
 #side_nav {
     background: #000;
     min-width: 250px;

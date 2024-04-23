@@ -5,10 +5,10 @@ function VideoCard(props) {
   return (
     <>
       <div className="col">
-        <div className=" card h-100">
+        <div className="rounded-3 card h-100">
           <img
             src={'src/assets/thumbnails/' + props.fileName + '.jpg'}
-            className="card-img-top videoCardImage" alt="text"
+            className="rounded-3 card-img-top videoCardImage" alt="text"
           />
           <div className="card-body">
             <h5 className="card-title">
