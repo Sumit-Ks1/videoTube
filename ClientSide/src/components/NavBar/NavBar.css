@@ -9,8 +9,18 @@ body {
 /* .navbar{
     z-index: 1;
 } */
+nav{
+    margin-left: 250px;
+}
 
-.navbar{
+@media screen and (max-width:768px) {
+    nav {
+        margin-left: 0px !important;
+
+    }
+}
+
+.navbar {
     padding: 0;
     background-color: red;
 }
@@ -57,4 +67,20 @@ hr.h-color {
     #side_nav.active {
         margin-left: 0;
     }
+}
+
+.profile{
+    /* background-color: red; */
+    margin-right: 60px;
+}
+
+.profile img{
+    position: absolute;
+    right: 2px;
+    top:2px;
+    object-fit: cover;
+    width: 70px;
+    /* background-color:aqua; */
+    border-radius: 50%;
+
 }
