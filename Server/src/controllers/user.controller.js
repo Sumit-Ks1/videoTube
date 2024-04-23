@@ -32,6 +32,7 @@ const registerUser = asyncHandler(async (req, res) => {
     // remove password and refresh token field from response
     // check for user creation
     // return res
+    
     const { fullName, email, username, password } = req.body// req.body sees for the data coming from form or json
     
 
@@ -58,7 +59,7 @@ const registerUser = asyncHandler(async (req, res) => {
         // coverImage: coverImage?.url || "",
         email,
         password,
-        username: username.toLowerCase()
+        username: username//.toLowerCase()
     })
     console.log(email);
     // remove password and refresh token field from response
@@ -80,6 +81,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
 const imagesUser = asyncHandler(async (req,res) => {
     const {avatar,coverImage} = req.body;
+    
     return res.status(200).json(
         new ApiResponse(200,{avatar,coverImage},"Image path taken sucessfully")
     )
