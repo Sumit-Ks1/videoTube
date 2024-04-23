@@ -48,7 +48,7 @@ function SideBar(props) {
                 </button>
             </div>
 
-            <ul className="list-unstyled px-2">
+            <ul className="sidebar-list list-unstyled px-2">
                 <li className="active">
                     <Link to='/'>
                         <a href="/" className="text-decoration-none px-3 py-3 my-1 d-block">

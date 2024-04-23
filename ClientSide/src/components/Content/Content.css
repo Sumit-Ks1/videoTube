@@ -5,11 +5,13 @@
     margin-right: 0px;
 }
 .content-parent{
-    /* background-color: blue; */
+    background-color: rgb(7, 88, 0);
     /* background: linear-gradient(to right, #03001e, #7303c0, #ec38bc, #fdeff9); */
     /* background: linear-gradient(to right, #c33764, #1d2671); */
-    background: linear-gradient(to right, #03001e, #7303c0, #ec38bc, #fdeff9);
+    /* background: linear-gradient(to right, #03001e, #7303c0, #ec38bc, #fdeff9); */
+
 }
+
 
 .description {
     overflow: hidden;
@@ -24,5 +26,32 @@
 }
 
 .card {
-    background-color: none !important;
+    /* background-color: none !important; */
+    /* background-color:red; */
+    /* opacity: 0; */
+    background-color: rgba(0, 0, 0, 0);
+
+}
+
+.card:hover {
+    background-color: rgba(225, 225, 225, 0.1);
+    
+}
+
+.card-time {
+    background-color: black;
+    position: absolute;
+    right: 20px;
+    padding: 0 5px;
+    border-radius: 8px;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.card p {
+    color: lightgrey;
+}
+
+.card h5 {
+    margin-right: 35px;
 }
