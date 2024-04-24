@@ -25,7 +25,10 @@ const userSchema = new Schema({
         trim: true,
         index: true
     },
-    
+    imagesStore: [{
+        type: Schema.Types.ObjectId,
+        ref: "Image"
+    }],
     // avatar: {
     //     type: Schema.Types.ObjectId, // we use cloudinary url
     //     ref: "Image"

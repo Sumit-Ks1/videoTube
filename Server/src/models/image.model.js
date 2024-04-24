@@ -9,10 +9,10 @@ const imageSchema = new Schema({
     coverImage: {
         type: String,
     },
-    ownerOfImage: {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-    },
+    ownerImage: {
+        type: String,
+    }
+    
 }, { timestamps: true });
 
 export const Image = mongoose.model('Image',imageSchema);

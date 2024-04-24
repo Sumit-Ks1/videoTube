@@ -84,11 +84,15 @@ const registerUser = asyncHandler(async (req, res) => {
 const imagesUser = asyncHandler(async (req,res) => {
     const {avatar,coverImage} = req.body;
     // const ownerOfImage=req.user.username
+    // const userImageOwner =await User.findById(req.user._id).populate('images');
+    // userImageOwner.avatar = avatar ;
+    // userImageOwner.coverImage = coverImage;
     console.log(avatar)
+    const ownerImage= req.user._id;
     const userImage= await Image.create(
         avatar,
         coverImage,
-        
+        ownerImage,
     )
     // await userImage.save({ validateBeforeSave: false })
     const userImagevers = await Image.findById(userImage._id)
