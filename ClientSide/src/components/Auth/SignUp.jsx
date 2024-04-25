@@ -77,7 +77,7 @@ function SignUp() {
     formData.append('password', password);
     formData.append('username', username);
 
-    axios.post('localhost:8000/api/v1/users/register',formData).then(Response => {
+    axios.post('api/v1/users/register',formData).then(Response => {
       console.log(Response.data)
     })
     .catch(error => {
