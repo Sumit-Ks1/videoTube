@@ -7,7 +7,7 @@ import { useState } from 'react'
 
 function Content(props) {
 
-    var detail = Details[0]
+    // var detail = Details[0]
 
     var iWindowWidth = window.screen.width;
     const [windowWidth, setwindowWidth] = useState(iWindowWidth)

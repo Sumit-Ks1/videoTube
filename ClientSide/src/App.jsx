@@ -79,6 +79,7 @@ function App() {
         <Routes>
           {/* Routes that require sidebar and navbar */}
           <Route path="/" element={<Layout />}>
+            
             <Route index element={ // home
               <Content isSideActive={sideActive} />
             } />
