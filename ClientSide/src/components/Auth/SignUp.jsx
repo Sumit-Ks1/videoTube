@@ -51,7 +51,6 @@ function SignUp() {
 
   var changename = "";
   function changeHandler(event) {
-    // console.log("changed")
     changename = event.target.name;
     if(changename == "fullname") {
       setFullName(event.target.value);
@@ -84,7 +83,6 @@ function SignUp() {
       console.error(error)
     })
 
-    console.log("Inside click handler")
     const isAuthenticated = true; // example
     if (isAuthenticated) {
       // return <Navigate to='/moreDetails' />
@@ -173,7 +171,7 @@ function SignUp() {
                     {/* <!-- Checkbox --> */}
                     <div className="form-check mb-3 mb-md-0">
                       <label className="form-check-label" htmlFor="loginCheck"> Remember me </label>
-                      <input className="form-check-input" type="checkbox" value="" id="loginCheck" checked />
+                      <input className="form-check-input" type="checkbox" value="" id="loginCheck" />
                     </div>
                   </div>
 
