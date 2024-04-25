@@ -2,7 +2,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './NavBar.css'
 import MenuIcon from '@mui/icons-material/Menu';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import Search from '@mui/icons-material/Search';
 
@@ -35,28 +36,28 @@ function justForComparission() {
     )
 }
 
+
 function NavBar(props) {
+
+    const navigate = useNavigate(true)
+    const isAuthenticated = false;
 
     // passing on click listener to App.jsx
     function sideButtonClick() {
         props.onSideClick()
     }
 
-    return (
-        // <div>
-        //     <nav className="navbar bg-body-tertiary navBar">
-        //         <div className="container-fluid">
+    function profileClickHandler() {
+        console.log("profile clicked")
+        if(!isAuthenticated) {
+            navigate("/signup#pills-register")
+        }
+        else {
+            navigate("/profile")
+        }
+    }
 
-        //             <a className="navbar-brand">Navbar</a>
-        //             <form className="d-flex" role="search">
-        //                 <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        //                 </input>
-        //                 {/* this button was not working inside input elment */}
-        //                 <button className="btn btn-outline-success" type="submit">Search</button>
-        //             </form>
-        //         </div>
-        //     </nav>
-        // </div>x
+    return (
         <nav className="navbar navbar-expand-md navbar-light bg-dark py-2">
             <div className="container-fluid">
                 <div className="d-flex justify-content-between d-md-none d-block">
@@ -78,20 +79,11 @@ function NavBar(props) {
                     </button>
                 </form>
 
-                <div className="profile text-white">
+                <div className="profile text-white" onClick={profileClickHandler}>
                     <span>User name</span>
                     <img src='src/assets/avatars/avatar3.svg' alt="" />
                 </div>
 
-                {/* For Logo at the right
-                <Link to={'/'}>
-                    <a className="navbar-brand fs-4" href="">
-                        <span className="bg-dark rounded px-2 py-0 text-white">
-                            YT
-                        </span>
-                    </a>
-                </Link> */}
-                {/* <a className="navbar-brand">Navbar</a> */}
 
             </div>
         </nav>

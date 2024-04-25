@@ -5,12 +5,19 @@ body {
 .sidebar-list a {
     text-decoration: none;
 }
-
+.logo-text{
+    /* color: rgb(0, 255, 242); */
+    color: #9290C3;
+    font-weight: bolder;
+    
+}
 #side_nav {
-    background: #000;
+    /* background: #1B1A55; */
+    background-color: #070F2B;
     min-width: 250px;
     max-width: 250px;
     transition: all 0.3s;
+    border-right: 1px solid white;
 }
 
 .content {
