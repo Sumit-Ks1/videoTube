@@ -70,11 +70,14 @@ function SignUp() {
 
   function SignInHandler() {
 
-    const registerData = {fullName: fullName, email: email, username:username, password:password};
+    // const registerData = {fullName: fullName, email: email, username:username, password:password};
+    const formData = new FormData();
+    formData.append('fullName', fullName)
+    formData.append('email', email);
+    formData.append('password', password);
+    formData.append('username', username);
 
-    // axios.post('localhost:8000/api/v1/register',registerData).then(Response => {
-    axios.post('https://8000-devyanshunegi-videotube-zp53nwzhh9f.ws-us110.gitpod.io/api/v1/register', registerData).then(Response => {
-
+    axios.post('localhost:8000/api/v1/users/register',formData).then(Response => {
       console.log(Response.data)
     })
     .catch(error => {
