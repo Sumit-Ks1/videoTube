@@ -5,7 +5,9 @@
     margin-right: 0px;
 }
 .content-parent{
-    background-color: rgb(7, 88, 0);
+    /* background-color: rgb(49, 49, 49); */
+    /* background-color: #535C91; */
+    background: #1B1A55;
     /* background: linear-gradient(to right, #03001e, #7303c0, #ec38bc, #fdeff9); */
     /* background: linear-gradient(to right, #c33764, #1d2671); */
     /* background: linear-gradient(to right, #03001e, #7303c0, #ec38bc, #fdeff9); */

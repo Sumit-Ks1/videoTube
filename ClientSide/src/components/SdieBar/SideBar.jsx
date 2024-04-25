@@ -40,7 +40,7 @@ function SideBar(props) {
         >
             <div className="header-box px-2 pt-3 pb-4 d-flex justify-content-between">
                 <h1 className="fs-4"><span className="bg-white text-dark rounded shadow px-2 me-2">YT</span> <span
-                    className="text-white">Youthube</span></h1>
+                    className="logo-text">Youtube</span></h1>
                 <button className="btn d-md-none d-block close-btn px-1 py-0 text-white"
                     id='close-side-btn'
                     onClick={removeClass}>
@@ -78,7 +78,7 @@ function SideBar(props) {
                     <Link to='/history'>
                         <a href="/history" className="text-decoration-none px-3 py-3 my-1 d-block">
                             <RestoreRoundedIcon /> History
-                        </a>
+                        </a>=-
                     </Link>
                 </li>
                 <li className="">

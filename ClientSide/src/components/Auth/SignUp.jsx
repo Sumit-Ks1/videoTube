@@ -1,6 +1,8 @@
 import './Auth.css'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+// import { useState } from 'react';
+import axios from 'axios'
 
 function SignUp() {
 
@@ -8,6 +10,12 @@ function SignUp() {
   const [activeTab, setActiveTab] = useState(window.location.hash || '#pills-login');
 
   const navigate = useNavigate(true);
+
+  // const { fullName, email, username, password } = req.body// req.body sees for the data coming from form or json
+  const [fullName, setFullName] = useState("")
+  const [email, setEmail] = useState("")
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
 
   /*  For checkbox click handler
   event handler for checkbox
@@ -41,7 +49,38 @@ function SignUp() {
     };
   }, []);
 
+  var changename = "";
+  function changeHandler(event) {
+    // console.log("changed")
+    changename = event.target.name;
+    if(changename == "fullname") {
+      setFullName(event.target.value);
+    }
+    else if (changename == "username" ) {
+      setUsername(event.target.value);
+    }
+    else if(changename == "email") {
+      setEmail(event.target.value);
+    }
+    else if (changename == "password" ) {
+      setPassword(event.target.value);
+    }
+  }
+
+
   function SignInHandler() {
+
+    const registerData = {fullName: fullName, email: email, username:username, password:password};
+
+    // axios.post('localhost:8000/api/v1/register',registerData).then(Response => {
+    axios.post('https://8000-devyanshunegi-videotube-zp53nwzhh9f.ws-us110.gitpod.io/api/v1/register', registerData).then(Response => {
+
+      console.log(Response.data)
+    })
+    .catch(error => {
+      console.error(error)
+    })
+
     console.log("Inside click handler")
     const isAuthenticated = true; // example
     if (isAuthenticated) {
@@ -116,13 +155,13 @@ function SignUp() {
                 {/* <!-- Email input --> */}
                 <div data-mdb-input-init className="form-outline mb-4">
                   <label className="form-label" htmlFor="loginName">Email or username</label>
-                  <input type="email" id="loginName" className="form-control" />
+                  <input type="email" id="loginName" className="form-control"  onChange={changeHandler}/>
                 </div>
 
                 {/* <!-- Password input --> */}
                 <div data-mdb-input-init className="form-outline mb-4">
                   <label className="form-label" htmlFor="loginPassword">Password</label>
-                  <input type="password" id="loginPassword" className="form-control" />
+                  <input type="password" id="loginPassword" className="form-control" onChange={changeHandler} />
                 </div>
 
                 {/* <!-- 2 column grid layout --> */}
@@ -165,25 +204,29 @@ function SignUp() {
                 {/* <!-- Name input --> */}
                 <div data-mdb-input-init className="form-outline mb-4">
                   <label className="form-label" htmlFor="registerName">Name</label>
-                  <input type="text" id="registerName" className="form-control" />
+                  <input type="text" id="registerName" className="form-control" name='fullname' 
+                  onChange={changeHandler} value={fullName}/>
                 </div>
 
                 {/* <!-- Username input --> */}
                 <div data-mdb-input-init className="form-outline mb-4">
                   <label className="form-label" htmlFor="registerUsername">Username (To Be Unique) </label>
-                  <input type="text" id="registerUsername" className="form-control" />
+                  <input type="text" id="registerUsername" className="form-control" name='username' 
+                  onChange={changeHandler} value={username}/>
                 </div>
 
                 {/* <!-- Email input --> */}
                 <div data-mdb-input-init className="form-outline mb-4">
                   <label className="form-label" htmlFor="registerEmail">Email</label>
-                  <input type="email" id="registerEmail" className="form-control" />
+                  <input type="email" id="registerEmail" className="form-control" name='email' 
+                  onChange={changeHandler} value={email}/>
                 </div>
 
                 {/* <!-- Password input --> */}
                 <div data-mdb-input-init className="form-outline mb-4">
                   <label className="form-label" htmlFor="registerPassword">Password</label>
-                  <input type="password" id="registerPassword" className="form-control" />
+                  <input type="password" id="registerPassword" className="form-control" name='password' 
+                  onChange={changeHandler} value={password}/>
                 </div>
 
                 {/* <!-- Repeat Password input --> */}
@@ -205,7 +248,8 @@ function SignUp() {
 
                 {/* <!-- Submit button --> */}
                 {/* <div className="d-flex justify-content-center"> */}
-                <button type="submit" data-mdb-button-init data-mdb-ripple-init className="btn btn-primary btn-block mb-3" onClick={SignInHandler}>Sign in</button>
+                <button type="submit" data-mdb-button-init data-mdb-ripple-init className="btn btn-primary btn-block mb-3"
+                 onClick={SignInHandler}>Sign in</button>
                 {/* </div> */}
               </form>
 
