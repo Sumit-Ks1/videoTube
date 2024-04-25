@@ -23,11 +23,15 @@ router.route("/register").post(
 router.route("/register/pathImage/:username").post(
     upload.fields([
         {
-            name: "something", // as per name in user.models.js
+            name: "avataafdgr", // as per name in user.models.js
             maxCount: 1
         },
-        
-    ]),imagesUser)
+        // {
+        //     name: "avataafdgr", // as per name in user.models.js
+        //     maxCount: 1
+        // }
+    ]),
+    imagesUser)
 // router.route("/videoPlay").post(
 //     upload.fields([
 //         {

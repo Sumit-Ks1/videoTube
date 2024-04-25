@@ -3,11 +3,13 @@ import mongoose, { Schema } from 'mongoose';
 
 const imageSchema = new Schema({
     avatar: {
-        type: String, // we use cloudinary url
-        
+        type: Object, // we use cloudinary url
+        required: true,
     },
     coverImage: {
-        type: String,
+        type: Object,
+        required: true,
+
     },
     ownerImage: {
         type: String,

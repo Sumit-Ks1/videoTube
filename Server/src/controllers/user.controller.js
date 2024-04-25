@@ -93,14 +93,27 @@ const imagesUser = asyncHandler(async (req,res) => {
     // userImageOwner.avatar = avatar ;
     // userImageOwner.coverImage = coverImage;
     console.log(avatar)
+    console.log(coverImage)
+
+    console.log(username)
+    
     const ownerImage= username
-    const userImage= await Image.create(
+    const image = await Image.create({
         avatar,
         coverImage,
         ownerImage,
-    )
+})
+    if (!image)
+    {
+        throw new ApiError(500, "Something went wrong while creating the user")
+    }
+    console.log(username)
     // await userImage.save({ validateBeforeSave: false })
-    const userImagevers = await Image.findById(userImage._id)
+    const userImagevers = await Image.findById(image._id)
+    if(!userImagevers)
+    {
+        throw new ApiError(500, "Something went wrong while finding  the user image id")
+    }
     return res.status(200).json(
         new ApiResponse(200,userImagevers,"Image path taken sucessfully")
     )
