@@ -50,16 +50,18 @@ const registerUser = asyncHandler(async (req, res) => {
         throw new ApiError(409, "User already exists")
     }
     console.log(username);
+    
     // check for images, check for avatar
     // imageUser content was here before
     // create user object - create entry in db and therefore data in it will be available to the user
+    
     const user = await User.create({
         fullName,
         // avatar: avatar.url,
         // coverImage: coverImage?.url || "",
         email,
         password,
-        username: username//.toLowerCase()
+        username: username,//.toLowerCase()
     })
     
     console.log(email);
@@ -82,13 +84,16 @@ const registerUser = asyncHandler(async (req, res) => {
 
 
 const imagesUser = asyncHandler(async (req,res) => {
+    const username = req.params.username;
+    const userData= User.findOne({username})
     const {avatar,coverImage} = req.body;
+    
     // const ownerOfImage=req.user.username
     // const userImageOwner =await User.findById(req.user._id).populate('images');
     // userImageOwner.avatar = avatar ;
     // userImageOwner.coverImage = coverImage;
     console.log(avatar)
-    const ownerImage= req.user._id;
+    const ownerImage= username
     const userImage= await Image.create(
         avatar,
         coverImage,
