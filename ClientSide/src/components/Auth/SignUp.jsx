@@ -69,7 +69,7 @@ function SignUp() {
   }
 
 
-  function SignInHandler() {
+  function SignInHandler() { // working
 
     // const registerData = {fullName: fullName, email: email, username:username, password:password};
     const formData = new FormData();
@@ -77,6 +77,7 @@ function SignUp() {
     formData.append('email', email);
     formData.append('password', password);
     formData.append('username', username);
+
     axios.post('api/v1/users/register', formData).then(Response => {
       console.log(Response.data)
       navigate('/moreDetails')
