@@ -41,7 +41,16 @@ router.route("/register/pathImage/:username").post(
 //     ]),
 //     publishVideo
 // )
-router.route("/login").post(loginUser)
+router.route("/login").post(upload.fields([
+    {
+        name: "avataafdgr", // as per name in user.models.js
+        maxCount: 1
+    },
+    // {
+    //     name: "avataafdgr", // as per name in user.models.js
+    //     maxCount: 1
+    // }
+]),loginUser)
 
 // secured routes
 router.route("/logout").post(verifyJWT, logoutUser)

@@ -101,7 +101,7 @@ function SignUp() {
     formData.append('password', password);
     console.log(formData);
     console.log(username, password)
-    axios.post('api/v1/users/login', formData)
+    axios.post('/api/v1/users/login', formData)
       .then(Response => {
         console.log(Response.data);
         navigate('/');
