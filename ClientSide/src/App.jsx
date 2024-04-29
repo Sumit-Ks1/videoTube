@@ -40,6 +40,7 @@ function App() {
   );
 
   // the original code
+  // eslint-disable-next-line no-unused-vars
   const Home = () => (
 
     < div className="content">
@@ -57,6 +58,7 @@ function App() {
   );
 
 
+  // eslint-disable-next-line no-unused-vars
   const Layout = ({ children }) => {
     return (
       <div className="app-container">

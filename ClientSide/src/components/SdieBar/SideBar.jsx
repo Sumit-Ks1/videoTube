@@ -78,7 +78,7 @@ function SideBar(props) {
                     <Link to='/history'>
                         <a href="/history" className="text-decoration-none px-3 py-3 my-1 d-block">
                             <RestoreRoundedIcon /> History
-                        </a>=-
+                        </a>
                     </Link>
                 </li>
                 <li className="">

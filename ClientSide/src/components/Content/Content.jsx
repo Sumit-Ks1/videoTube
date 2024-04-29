@@ -32,6 +32,8 @@ function Content(props) {
                     return (
                         <VideoCard
                             key={detail.id}
+                            title={detail.title}
+                            duration={detail.duration}
                             fileName={detail.fileName}
                             desc={detail.desc}
                         />
@@ -41,6 +43,8 @@ function Content(props) {
                     return (
                         <VideoCard
                             key={detail.id}
+                            title={detail.title}
+                            duration={detail.duration}
                             fileName={detail.fileName}
                             desc={detail.desc}
                         />
@@ -50,6 +54,8 @@ function Content(props) {
                     return (
                         <VideoCard
                             key={detail.id}
+                            title={detail.title}
+                            duration={detail.duration}
                             fileName={detail.fileName}
                             desc={detail.desc}
                         />

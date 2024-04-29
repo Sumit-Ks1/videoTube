@@ -11,9 +11,9 @@ function VideoCard(props) {
             className="rounded-4 card-img-top videoCardImage" alt="text"
           />
           <div className="card-body">
-            <p className="card-time">12:34</p>
+            <p className="card-time">{props.duration}</p>
             <h5 className="card-title">
-                {props.fileName}
+                {props.title}
             </h5>
             <p className="description card-text">
               {props.desc}
