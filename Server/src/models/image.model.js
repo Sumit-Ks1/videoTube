@@ -3,16 +3,18 @@ import mongoose, { Schema } from 'mongoose';
 
 const imageSchema = new Schema({
     avatar: {
-        type: String, // we use cloudinary url
+        type: Object, // we use cloudinary url
         required: true,
     },
     coverImage: {
+        type: Object,
+        required: true,
+
+    },
+    ownerImage: {
         type: String,
-    },
-    ownerimage: {
-        type: Schema.Types.ObjectId,
-        ref: "User"
-    },
+    }
+    
 }, { timestamps: true });
 
 export const Image = mongoose.model('Image',imageSchema);

@@ -3,11 +3,11 @@ import HomeDetails from '../../Details/HomeDetails'
 import VideoCard from './VideoCard/VideoCard'
 import Details from '../../Details/HomeDetails'
 import './Content.css'
-import {useState} from 'react'
+import { useState } from 'react'
 
 function Content(props) {
 
-    var detail = Details[0]
+    // var detail = Details[0]
 
     var iWindowWidth = window.screen.width;
     const [windowWidth, setwindowWidth] = useState(iWindowWidth)
@@ -21,17 +21,19 @@ function Content(props) {
 
     return (
         <>
-        {/* if side active add class side-active */}
+            {/* if side active add class side-active */}
             {/* <div className="side-active row row-cols-1 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 g-4"> */}
-                <div className={`videoContainer row row-cols-1 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 g-4 pt-3 
+            <div className={` content-parent videoContainer row row-cols-1 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 g-2 pt-2 px-1
                 
                 ${(props.isSideActive) ? 'side-active' : ''}
-                ${windowWidth>768 ? 'side-active' : '' }`} 
-                >
-                {Details.map( (detail) => {
+                ${windowWidth > 768 ? 'side-active' : ''}`}
+            >
+                {Details.map((detail) => {
                     return (
                         <VideoCard
                             key={detail.id}
+                            title={detail.title}
+                            duration={detail.duration}
                             fileName={detail.fileName}
                             desc={detail.desc}
                         />
@@ -41,6 +43,8 @@ function Content(props) {
                     return (
                         <VideoCard
                             key={detail.id}
+                            title={detail.title}
+                            duration={detail.duration}
                             fileName={detail.fileName}
                             desc={detail.desc}
                         />
@@ -50,6 +54,8 @@ function Content(props) {
                     return (
                         <VideoCard
                             key={detail.id}
+                            title={detail.title}
+                            duration={detail.duration}
                             fileName={detail.fileName}
                             desc={detail.desc}
                         />

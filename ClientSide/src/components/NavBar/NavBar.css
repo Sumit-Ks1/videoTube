@@ -9,10 +9,22 @@ body {
 /* .navbar{
     z-index: 1;
 } */
+nav{
+    margin-left: 250px;
+}
 
-.navbar{
+@media screen and (max-width:768px) {
+    nav {
+        margin-left: 0px !important;
+
+    }
+}
+
+.navbar {
     padding: 0;
-    background-color: red;
+    /* background-color: red!important; */
+    background-color: #070F2B !important;
+    /* border-left: 1px solid white; */
 }
 
 #side_nav {
@@ -57,4 +69,32 @@ hr.h-color {
     #side_nav.active {
         margin-left: 0;
     }
+}
+
+.profile{
+    /* background-color: red; */
+    margin-right: 60px;
+}
+
+.profile:hover{
+    cursor: pointer;
+    /* background-color: rgba(255, 255, 255, 0.2); */
+    }
+
+.profile img{
+    position: absolute;
+    right: 2px;
+    top:2px;
+    object-fit: cover;
+    width: 70px;
+    /* background-color:aqua; */
+    border-radius: 50%;
+
+}
+
+.profile span{
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 3px;
+    border-radius: 5px;
+
 }

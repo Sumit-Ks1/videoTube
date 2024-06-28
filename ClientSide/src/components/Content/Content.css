@@ -4,3 +4,56 @@
 .videoContainer{
     margin-right: 0px;
 }
+.content-parent{
+    /* background-color: rgb(49, 49, 49); */
+    /* background-color: #535C91; */
+    background: #1B1A55;
+    /* background: linear-gradient(to right, #03001e, #7303c0, #ec38bc, #fdeff9); */
+    /* background: linear-gradient(to right, #c33764, #1d2671); */
+    /* background: linear-gradient(to right, #03001e, #7303c0, #ec38bc, #fdeff9); */
+
+}
+
+
+.description {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    /* Limit to 3 lines */
+    -webkit-box-orient: vertical;
+}
+
+.videoCardImage {
+    border-radius: 1rem;
+}
+
+.card {
+    /* background-color: none !important; */
+    /* background-color:red; */
+    /* opacity: 0; */
+    background-color: rgba(0, 0, 0, 0);
+
+}
+
+.card:hover {
+    background-color: rgba(225, 225, 225, 0.1);
+    
+}
+
+.card-time {
+    background-color: black;
+    position: absolute;
+    right: 20px;
+    padding: 0 5px;
+    border-radius: 8px;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.card p {
+    color: lightgrey;
+}
+
+.card h5 {
+    margin-right: 35px;
+}

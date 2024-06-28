@@ -1,11 +1,8 @@
 import AvatarCard from "./AvatarCard";
 import "./Auth.css"
-import mySvg from '../../assets/avatars/avatar2.svg'
 import { useState } from 'react'
-import PersonIcon from '@mui/icons-material/Person';
 import AvatarBackCard from "./AvatarBackCard";
 // import { useHistory } from "react-router-dom";
-import React from 'react';
 import { useNavigate } from 'react-router-dom'
 
 
@@ -22,7 +19,6 @@ function MoreDetails() {
     const [avatar, setAvatar] = useState('default')
     const [back, setBack] = useState('1');
     function selectedAvatar(selected) {
-        // console.log(selected)
         setAvatar(String(selected))
 
     }
@@ -62,7 +58,6 @@ function MoreDetails() {
 
                     {/* <AvatarCard /> */}
                     {list.map((i) => {
-                        console.log(i)
                         return (<AvatarCard key={i} id={i} onSelect={selectedAvatar} />)
                     })}
 
@@ -72,7 +67,6 @@ function MoreDetails() {
                 <div className="avatar-backs row row-cols-1 row-cols-md-2 g-4 mx-3">
 
                     {backlist.map((back) => {
-                        console.log("Hello it works")
                         return (<AvatarBackCard key={back} id={back} onSelect={selectedBack} />)
                     })}
 

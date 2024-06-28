@@ -1,6 +1,8 @@
 import './Auth.css'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+// import { useState } from 'react';
+import axios from 'axios'
 
 function SignUp() {
 
@@ -8,6 +10,14 @@ function SignUp() {
   const [activeTab, setActiveTab] = useState(window.location.hash || '#pills-login');
 
   const navigate = useNavigate(true);
+
+  // const { fullName, email, username, password } = req.body// req.body sees for the data coming from form or json
+  const [fullName, setFullName] = useState("")
+  const [email, setEmail] = useState("")
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  const [error, setError] = useState("def")
+  const [loginError, setLoginError] = useState("def");
 
   /*  For checkbox click handler
   event handler for checkbox
@@ -41,18 +51,81 @@ function SignUp() {
     };
   }, []);
 
-  function SignInHandler() {
-    console.log("Inside click handler")
-    const isAuthenticated = true; // example
-    if (isAuthenticated) {
-      // return <Navigate to='/moreDetails' />
-      navigate('/moreDetails')
+  var changename = "";
+  function changeHandler(event) {
+    changename = event.target.name;
+    if (changename == "fullname") {
+      setFullName(event.target.value);
     }
-    else {
-      // return <Navigate to='/signup' />
-      navigate('/signup')
+    else if (changename == "username") {
+      setUsername(event.target.value);
     }
+    else if (changename == "email") {
+      setEmail(event.target.value);
+    }
+    else if (changename == "password") {
+      setPassword(event.target.value);
+    }
+  }
 
+
+  function SignInHandler() { // working
+
+    // const registerData = {fullName: fullName, email: email, username:username, password:password};
+    const formData = new FormData();
+    formData.append('fullName', fullName)
+    formData.append('email', email);
+    formData.append('password', password);
+    formData.append('username', username);
+
+    axios.post('api/v1/users/register', formData).then(Response => {
+      console.log(Response.data)
+      navigate('/moreDetails')
+    })
+      .catch(error => {
+        console.log("this is chatched error")
+        console.error(error)
+        console.log("status code is ", error.response.status)
+        const statusCode = error.response.status;
+        if (statusCode == 400) {// Empty field
+          setError("Cannot Be Empty");
+        }
+        else if (statusCode == 409) { // User already exist
+          setError("User Already Exist")
+        }
+      })
+  }
+
+  function loginHandler() {
+    const formData = new FormData();
+    formData.append('username', username);
+    formData.append('password', password);
+    console.log(formData);
+    console.log(username, password)
+    axios.post('/api/v1/users/login', formData)
+      .then(Response => {
+        console.log(Response.data);
+        navigate('/');
+      })
+      .catch(error => {
+        console.log("catched error");
+        console.log(error);
+        console.log("error code ", error.response.status);
+        var errorCode = error.response.status;
+        if (errorCode == 400) {
+          setLoginError("Username or Email is required")
+        }
+        else if (errorCode == 402) {
+          setLoginError("User dose not exist")
+        }
+        else if (errorCode == 401) {
+          setLoginError("Password incorrect")
+        }
+      });
+  }
+
+  function submitHandler(event) {
+    event.preventDefault()
   }
 
   /*const isAuthenticated = false; // Get from backend
@@ -98,13 +171,14 @@ function SignUp() {
             </li>
           </ul>
 
-          {/* Pills content */}
           <div className="tab-content">
+
+
 
             {/* Login Tab */}
             <div className={`tab-pane fade ${activeTab === '#pills-login' ? 'show active' : ''}`} id="pills-login" role="tabpanel" aria-labelledby="tab-login">
 
-              <form className='mt-5'>
+              <form className='mt-5' onSubmit={submitHandler}>
                 {/* <div className="text-center mb-3">
 
                   <button type="button" data-mdb-button-init data-mdb-ripple-init className="btn btn-secondary btn-floating mx-1 googleSignIn">
@@ -116,13 +190,15 @@ function SignUp() {
                 {/* <!-- Email input --> */}
                 <div data-mdb-input-init className="form-outline mb-4">
                   <label className="form-label" htmlFor="loginName">Email or username</label>
-                  <input type="email" id="loginName" className="form-control" />
+                  <input type="text" id="loginName" className="form-control" name='username'
+                    onChange={changeHandler} value={username} />
                 </div>
 
                 {/* <!-- Password input --> */}
                 <div data-mdb-input-init className="form-outline mb-4">
                   <label className="form-label" htmlFor="loginPassword">Password</label>
-                  <input type="password" id="loginPassword" className="form-control" />
+                  <input type="password" id="loginPassword" className="form-control" name='password'
+                    onChange={changeHandler} value={password} />
                 </div>
 
                 {/* <!-- 2 column grid layout --> */}
@@ -131,7 +207,7 @@ function SignUp() {
                     {/* <!-- Checkbox --> */}
                     <div className="form-check mb-3 mb-md-0">
                       <label className="form-check-label" htmlFor="loginCheck"> Remember me </label>
-                      <input className="form-check-input" type="checkbox" value="" id="loginCheck" checked />
+                      <input className="form-check-input" type="checkbox" value="" id="loginCheck" />
                     </div>
                   </div>
 
@@ -142,8 +218,17 @@ function SignUp() {
                 </div>
 
                 {/* <!-- Submit button --> */}
-                <div className="d-flex justify-content-center">
-                  <button type="submit" data-mdb-button-init data-mdb-ripple-init className="btn btn-primary btn-block mb-4"> Sign in</button>
+                <div className="d-flex justify-content-start">
+                  <button type="submit" data-mdb-button-init data-mdb-ripple-init
+                    className="btn btn-primary btn-block mb-4"
+                    onClick={loginHandler}
+                  > Log In</button>
+
+                  <p className={`py-2 mx-3 error-msg 
+                  ${loginError == "def" ? "d-none" : ""}`} >
+                    ! {loginError}
+                  </p>
+
                 </div>
 
                 {/* <!-- Register buttons --> */}
@@ -160,30 +245,34 @@ function SignUp() {
             {/* Register Tab */}
             <div className={`tab-pane fade ${activeTab === '#pills-register' ? 'show active' : ''}`} id="pills-register" role="tabpanel" aria-labelledby="tab-register">
 
-              <form className='mt-5'>
+              <form className='mt-5' onSubmit={submitHandler}>
 
                 {/* <!-- Name input --> */}
                 <div data-mdb-input-init className="form-outline mb-4">
                   <label className="form-label" htmlFor="registerName">Name</label>
-                  <input type="text" id="registerName" className="form-control" />
+                  <input type="text" id="registerName" className="form-control" name='fullname'
+                    onChange={changeHandler} value={fullName} />
                 </div>
 
                 {/* <!-- Username input --> */}
                 <div data-mdb-input-init className="form-outline mb-4">
                   <label className="form-label" htmlFor="registerUsername">Username (To Be Unique) </label>
-                  <input type="text" id="registerUsername" className="form-control" />
+                  <input type="text" id="registerUsername" className="form-control" name='username'
+                    onChange={changeHandler} value={username} />
                 </div>
 
                 {/* <!-- Email input --> */}
                 <div data-mdb-input-init className="form-outline mb-4">
                   <label className="form-label" htmlFor="registerEmail">Email</label>
-                  <input type="email" id="registerEmail" className="form-control" />
+                  <input type="email" id="registerEmail" className="form-control" name='email'
+                    onChange={changeHandler} value={email} />
                 </div>
 
                 {/* <!-- Password input --> */}
                 <div data-mdb-input-init className="form-outline mb-4">
                   <label className="form-label" htmlFor="registerPassword">Password</label>
-                  <input type="password" id="registerPassword" className="form-control" />
+                  <input type="password" id="registerPassword" className="form-control" name='password'
+                    onChange={changeHandler} value={password} />
                 </div>
 
                 {/* <!-- Repeat Password input --> */}
@@ -204,9 +293,12 @@ function SignUp() {
                 </div>
 
                 {/* <!-- Submit button --> */}
-                {/* <div className="d-flex justify-content-center"> */}
-                <button type="submit" data-mdb-button-init data-mdb-ripple-init className="btn btn-primary btn-block mb-3" onClick={SignInHandler}>Sign in</button>
-                {/* </div> */}
+                <div className="d-flex justify-content-start">
+                  <button type="submit" data-mdb-button-init data-mdb-ripple-init className="btn btn-primary btn-block mb-3"
+                    onClick={SignInHandler}>Sign in</button>
+                  <p className={`py-2 mx-3 error-msg ${error == "def" ? "d-none" : ""}`} > ! {error}</p>
+                </div>
+
               </form>
 
             </div>

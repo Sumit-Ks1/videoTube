@@ -5,16 +5,17 @@ function VideoCard(props) {
   return (
     <>
       <div className="col">
-        <div className="card h-100">
+        <div className="text-light rounded-4 card h-100">
           <img
             src={'src/assets/thumbnails/' + props.fileName + '.jpg'}
-            className="card-img-top" alt="text"
+            className="rounded-4 card-img-top videoCardImage" alt="text"
           />
           <div className="card-body">
+            <p className="card-time">{props.duration}</p>
             <h5 className="card-title">
-                {props.fileName}
+                {props.title}
             </h5>
-            <p className="card-text">
+            <p className="description card-text">
               {props.desc}
             </p>
           </div>

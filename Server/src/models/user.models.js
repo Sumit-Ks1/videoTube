@@ -8,7 +8,7 @@ const userSchema = new Schema({
         type: String,
         required: true,
         unique: true,
-        lowercase: true,
+        
         trim: true,
         index: true
     },
@@ -25,14 +25,18 @@ const userSchema = new Schema({
         trim: true,
         index: true
     },
-    avatar: {
-        type: Schema.Types.ObjectId, // we use cloudinary url
-        ref: "Image"
-    },
-    coverImage: {
-        type: Schema.Types.ObjectId,
-        ref: "Image"
-    },
+    // imagesStore: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: "Image"
+    // },
+    // avatar: {
+    //     type: Schema.Types.ObjectId, // we use cloudinary url
+    //     ref: "Image"
+    // },
+    // coverImage: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: "Image"
+    // },
     watchHistory: {
         type: Schema.Types.ObjectId,
         ref: "Video"
